@@ -22,11 +22,9 @@ const HomePage = () => {
   return (
     <>
       <ul>
-        {games.map((game, i) => (
+        {games?.map((game, i) => (
           <li key={i}>
-            <Link to={`/games/${game._id}`}>
-              <p>{game.title}</p>
-            </Link>
+            <Link to={`/games/${game._id}`}>{game.title}</Link>
           </li>
         ))}
       </ul>
