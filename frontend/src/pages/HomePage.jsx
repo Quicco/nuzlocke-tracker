@@ -9,6 +9,10 @@ const HomePage = () => {
     const fetchGames = async () => {
       try {
         const res = await fetch('http://localhost:5001/games');
+
+        if (!res.ok) {
+          throw new Error(`HTTP error! status: ${res.status}`);
+        }
         const data = await res.json();
         setGames(data);
       } catch (error) {
