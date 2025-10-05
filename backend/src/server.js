@@ -14,11 +14,10 @@ const port = process.env.PORT;
 
 // middleware
 app.use(express.json());
-
 app.use(cors());
 
+// tutorial related code
 app.use("/api/notes", notesRoutes);
-
 // nuzlocke related code
 app.use("/games", gamesRoutes);
 

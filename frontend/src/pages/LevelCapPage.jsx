@@ -26,16 +26,17 @@ const LevelCapPage = () => {
 
   return (
     <>
-      <h1>Level Caps for {gameData.title}</h1>
+      {gameData && (
+        <div className="game-info">
+          <h1>Level Caps for {gameData.title}</h1>
 
-      {gameData?.gyms?.length > 0 ? (
-        <ul>
-          {gameData.gyms.map((gym, i) => (
-            <li key={i}>{`${gym.name}: ${gym.levelCap}`}</li>
-          ))}
-        </ul>
-      ) : (
-        <p>No game data available</p>
+          <h2>Gyms:</h2>
+          <ul>
+            {gameData.gyms.map((gym, i) => (
+              <li key={i}>{`${gym.name}: ${gym.levelCap}`}</li>
+            ))}
+          </ul>
+        </div>
       )}
     </>
   );
