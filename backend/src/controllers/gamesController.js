@@ -67,15 +67,7 @@ export async function updateGame(req, res) {
 
 export async function deleteGame(req, res) {
   try {
-    const { title, gen, gyms, eliteFour, champion } = req.body;
-
-    const deletedGame = await Game.findByIdAndRemove(req.params.id, {
-      title,
-      gen,
-      gyms,
-      eliteFour,
-      champion,
-    });
+    const deletedGame = await Game.findByIdAndDelete(req.params.id);
 
     if (!deletedGame) {
       return res.status(404).json({message: "Game not found"});
