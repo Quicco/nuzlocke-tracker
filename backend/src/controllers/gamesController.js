@@ -26,8 +26,8 @@ export async function getGameById(req, res) {
 
 export async function createGame(req, res) {
   try {
-    const { title, gen, gyms, eliteFour, champion } = req.body;
-    const newGame = new Game({ title, gen, gyms, eliteFour, champion });
+    const { title, gen, gyms, eliteFour, champion, kantoGyms, finalBoss } = req.body;
+    const newGame = new Game({ title, gen, gyms, eliteFour, champion, kantoGyms, finalBoss });
 
     const savedGame = await newGame.save();
     res.status(201).json(savedGame);
@@ -39,7 +39,7 @@ export async function createGame(req, res) {
 
 export async function updateGame(req, res) {
   try {
-    const { title, gen, gyms, eliteFour, champion } = req.body;
+    const { title, gen, gyms, eliteFour, champion, kantoGyms, finalBoss } = req.body;
 
     /*  it deconstructs the data from the body into an object
     if any property is undefined, then mongoose ignores it
@@ -50,6 +50,8 @@ export async function updateGame(req, res) {
       gyms,
       eliteFour,
       champion,
+      kantoGyms,
+      finalBoss
     }, {
       new: true
     });

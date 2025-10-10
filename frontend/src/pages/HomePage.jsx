@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { Route, Routes } from 'react-router';
 import { Link } from 'react-router';
 
 const HomePage = () => {
   const [games, setGames] = useState([]);
+  const gens = [1, 2, 3];
 
   useEffect(() => {
     const fetchGames = async () => {
@@ -25,13 +25,25 @@ const HomePage = () => {
 
   return (
     <>
-      <ul>
-        {games?.map((game, i) => (
-          <li key={i}>
-            <Link to={`/games/${game._id}`}>{game.title}</Link>
-          </li>
-        ))}
-      </ul>
+      <h1>Games List</h1>
+
+      {gens.map((gen) => (
+        <div>
+          <h2>Gen {gen}</h2>
+
+          {games && (
+            <ul>
+              {games
+                .filter((game) => game.gen === gen)
+                .map((filtered) => (
+                  <li key={filtered._id}>
+                    <Link to={`/games/${filtered._id}`}>{filtered.title}</Link>
+                  </li>
+                ))}
+            </ul>
+          )}
+        </div>
+      ))}
     </>
   );
 };

@@ -9,9 +9,21 @@ const gameSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
-  gyms: [{ name: String, levelCap: Number }],
-  eliteFour: [{ name: String, levelCap: Number }],
-  champion: [{ name: String, levelCap: Number }],
+  gyms: {
+    type: [{ name: String, levelCap: Number }],
+    required: true,
+  },
+  eliteFour: {
+    type: [{ name: String, levelCap: Number }],
+    required: true,
+  },
+  champion: { type: Object, required: true },
+  kantoGyms: {
+    type: [{ name: String, levelCap: Number }]
+  },
+  finalBoss: {
+    type: Object
+  }
 });
 
 const Game = mongoose.model('Game', gameSchema);

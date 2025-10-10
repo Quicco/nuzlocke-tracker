@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
+import LevelCapInfo from '../components/LevelCapInfo.tsx';
 
 const LevelCapPage = () => {
   const [gameData, setGameData] = useState('');
@@ -30,12 +31,18 @@ const LevelCapPage = () => {
         <div className="game-info">
           <h1>Level Caps for {gameData.title}</h1>
 
-          <h2>Gyms:</h2>
-          <ul>
-            {gameData.gyms.map((gym, i) => (
-              <li key={i}>{`${gym.name}: ${gym.levelCap}`}</li>
-            ))}
-          </ul>
+          <LevelCapInfo title={'Gyms'} data={gameData.gyms} />
+          <LevelCapInfo title={'EliteFour'} data={gameData.eliteFour} />
+          <LevelCapInfo title={'Champion'} data={[]} champion={gameData.champion}/>
+
+          {gameData.kantoGyms.length > 0 && (
+            <LevelCapInfo title={"Kanto Gyms"} data={gameData.kantoGyms} />
+          )}
+
+          {gameData.finaBoss && (
+            <LevelCapInfo title={"Final Boss"} data={gameData.kantoGyms} champion={gameData.finaBoss}/>
+          )}
+
         </div>
       )}
     </>
