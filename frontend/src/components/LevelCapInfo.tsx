@@ -15,7 +15,7 @@ export default function ({ title, data }: Props) {
         <>
           <h2>{title}</h2>
 
-          <ul>
+          <ul className="levelCap-list">
             {data.map((trainer, i) => (
               <li key={i}>{`${trainer.name}: ${trainer.levelCap}`}</li>
             ))}

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router';
+import GameCard from '../components/GameCard';
 
 const HomePage = () => {
   const [games, setGames] = useState([]);
@@ -29,19 +29,7 @@ const HomePage = () => {
 
       {gens.map((gen) => (
         <div key={gen}>
-          <h2>Gen {gen}</h2>
-
-          {games && (
-            <ul>
-              {games
-                .filter((game) => game.gen === gen)
-                .map((filtered) => (
-                  <li key={filtered._id}>
-                    <Link to={`/games/${filtered._id}`}>{filtered.title}</Link>
-                  </li>
-                ))}
-            </ul>
-          )}
+         <GameCard gen={gen} data={games}/>
         </div>
       ))}
     </>
