@@ -28,7 +28,7 @@ const HomePage = () => {
       <h1>Games List</h1>
 
       {gens.map((gen) => (
-        <div>
+        <div key={gen}>
           <h2>Gen {gen}</h2>
 
           {games && (

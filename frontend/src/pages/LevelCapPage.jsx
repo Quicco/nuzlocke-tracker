@@ -3,7 +3,7 @@ import { useParams } from 'react-router';
 import LevelCapInfo from '../components/LevelCapInfo.tsx';
 
 const LevelCapPage = () => {
-  const [gameData, setGameData] = useState('');
+  const [gameData, setGameData] = useState(null);
 
   const { id } = useParams();
 
@@ -33,16 +33,9 @@ const LevelCapPage = () => {
 
           <LevelCapInfo title={'Gyms'} data={gameData.gyms} />
           <LevelCapInfo title={'EliteFour'} data={gameData.eliteFour} />
-          <LevelCapInfo title={'Champion'} data={[]} champion={gameData.champion}/>
-
-          {gameData.kantoGyms.length > 0 && (
-            <LevelCapInfo title={"Kanto Gyms"} data={gameData.kantoGyms} />
-          )}
-
-          {gameData.finaBoss && (
-            <LevelCapInfo title={"Final Boss"} data={gameData.kantoGyms} champion={gameData.finaBoss}/>
-          )}
-
+          <LevelCapInfo title={'Champion'} data={gameData.champion} />
+          <LevelCapInfo title={'Kanto Gyms'} data={gameData.kantoGyms} />
+          <LevelCapInfo title={'Final Boss'} data={gameData.finalBoss} />
         </div>
       )}
     </>

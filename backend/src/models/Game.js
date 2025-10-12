@@ -17,13 +17,13 @@ const gameSchema = new mongoose.Schema({
     type: [{ name: String, levelCap: Number }],
     required: true,
   },
-  champion: { type: Object, required: true },
+  champion: { type: [{ name: String, levelCap: Number }], required: true },
   kantoGyms: {
-    type: [{ name: String, levelCap: Number }]
+    type: [{ name: String, levelCap: Number }],
   },
   finalBoss: {
-    type: Object
-  }
+    type: [{ name: String, levelCap: Number }],
+  },
 });
 
 const Game = mongoose.model('Game', gameSchema);

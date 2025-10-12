@@ -1,34 +1,27 @@
-interface Gym {
-  name: string;
-  levelCap: number;
-}
-
-interface Champion {
+interface Opponent {
   name: string;
   levelCap: number;
 }
 
 interface Props {
   title: string;
-  data: Gym[];
-  champion: Champion | null;
+  data: Opponent[];
 }
 
-export default function ({ title, data, champion }: Props) {
+export default function ({ title, data }: Props) {
   return (
     <>
-      <h2>{title}</h2>
+      {data.length > 0 && (
+        <>
+          <h2>{title}</h2>
 
-      <ul>
-        {champion 
-        ? (
-          <li>{`${champion.name}: ${champion.levelCap}`}</li>
-        ) : (
-          data.map((trainer, i) => (
-            <li key={i}>{`${trainer.name}: ${trainer.levelCap}`}</li>
-          ))
-        )}
-      </ul>
+          <ul>
+            {data.map((trainer, i) => (
+              <li key={i}>{`${trainer.name}: ${trainer.levelCap}`}</li>
+            ))}
+          </ul>
+        </>
+      )}
     </>
   );
 }
