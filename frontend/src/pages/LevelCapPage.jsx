@@ -31,11 +31,11 @@ const LevelCapPage = () => {
         <div className="game-info">
           <h1>Level Caps for {gameData.title}</h1>
 
-          <LevelCapInfo title={'Gyms'} data={gameData.gyms} />
-          <LevelCapInfo title={'EliteFour'} data={gameData.eliteFour} />
-          <LevelCapInfo title={'Champion'} data={gameData.champion} />
-          <LevelCapInfo title={'Kanto Gyms'} data={gameData.kantoGyms} />
-          <LevelCapInfo title={'Final Boss'} data={gameData.finalBoss} />
+          {
+           Object.entries(gameData)
+           .map(([k, v]) => Array.isArray(v) && 
+           <LevelCapInfo title={k} data={v}/> )
+          }
         </div>
       )}
     </>
